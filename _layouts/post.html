@@ -13,7 +13,7 @@ layout: default
         loading.style.display = 'grid';
         e.preventDefault();
         setTimeout(()=>{
-          // vcuy()
+          vcuy()
           let doc = new PDFDocument({ compress: true, size: "A4" });
           let svgs = document.querySelectorAll('#svgbx svg');
           svgs.forEach((e, l) => {

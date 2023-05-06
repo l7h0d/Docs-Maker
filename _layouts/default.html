@@ -11,7 +11,7 @@
 <link href="{{canonical_url}}" rel='canonical'/>
 <meta content='width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1' name='viewport'/>
 <link rel="stylesheet" href="{{'/style.css'|absolute_url}}">
-{% for js in page.js %}<script src="{{'/script/{{js}}'|absolute_url}}" defer></script>{% endfor %}
+{% for js in page.js %}<script src="{{'/script/'|append:js|absolute_url}}" defer></script>{% endfor %}
 </head>
 <body id='body'>
   <div id="loading"></div>
