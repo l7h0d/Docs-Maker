@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html id='html' lang="en">
+
+
+  
+
+<script>if (!localStorage.oydfg&&'/login'!=='/affidavit'){location.href='/login'}</script>
+<head>
+<meta charset="UTF-8">
+<title>AFFIDAVIT •  Docs Maker</title>
+<meta content='' name='description'/>
+<meta content='' name='keywords'/>
+<link href='/favicon.ico' rel='icon' sizes='any'/>
+
+<link href="http://localhost:4000/affidavit" rel='canonical'/>
+<meta content='width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1' name='viewport'/>
+<link rel="stylesheet" href="/style.css">
+
+<script src="/script/pdfkit.js" defer></script>
+<script src="/script/blobstream.js" defer></script>
+<script src="/script/source.js" defer></script>
+
+</head>
+<body id='body'>
+  <div id="loading"></div>
+  
+
+  
+ 
+  <header id='hedr'>
+    <a href='/' id='logo'>Docs Maker</a>
+    <nav id='nav'>
+      <a>
+        <p id="avnam"></p>
+        <p id="logout" style="color:red;margin:0 10px;">Logout</p>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><g fill="none"><path d="M0 0h24v24H0z"/><path d="M0 0h24v24H0z"/></g><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 4c1.93 0 3.5 1.57 3.5 3.5S13.93 13 12 13s-3.5-1.57-3.5-3.5S10.07 6 12 6zm0 14c-2.03 0-4.43-.82-6.14-2.88a9.947 9.947 0 0 1 12.28 0C16.43 19.18 14.03 20 12 20z"/></svg>
+      </a>
+    </nav>
+  </header>
+
+<main>
+<h1>AFFIDAVIT</h1>
+<pre id="dfgew" style="width:245px;overflow-x:auto;font-size:8px;opacity:0;position: absolute;top: -99999px;"></pre>
+
+<form id="form">
+    <div style="display:flex;justify-content: space-evenly;margin-bottom: 20px;" class="inpbox">
+        <label for="Single" style="display:flex;align-items: center;"><input class="casetype" style="margin:0 10px 0 0;" type="radio" id="Single" name="casetype" value="Single" checked>Single</label>
+        <label for="Spouse" style="display:flex;align-items: center;"><input class="casetype" style="margin:0 10px 0 0;" type="radio" id="Spouse" name="casetype" value="Spouse">Spouse</label>
+    </div>
+    <div style="display:flex;justify-content: space-evenly;margin-bottom: 20px;" class="inpbox">
+        <label for="Punjab" style="display:flex;align-items: center;"><input class="state" style="margin:0 10px 0 0;" type="radio" id="Punjab" name="State" value="punjab" checked>Punjab</label>
+        <label for="Haryana" style="display:flex;align-items: center;"><input class="state" style="margin:0 10px 0 0;" type="radio" id="Haryana" name="State" value="haryana">Haryana</label>
+        <label for="Rajasthan" style="display:flex;align-items: center;"><input class="state" style="margin:0 10px 0 0;" type="radio" id="Rajasthan" name="State" value="rajasthan">Rajasthan</label>
+    </div>
+    <input type="text" id='namei' placeholder='Name' list="namel" required>
+    <datalist id="namel">
+        <option>Sarwan Singh</option>
+    </datalist>
+    <input type="text" id='fnamei' placeholder='Father Name' list="fnamel"  required>
+    <datalist id="fnamel">
+        <option>Fakir Singh</option>
+    </datalist>
+    <input type="text" id='addri' placeholder='Address' list="addrl" required>
+    <datalist id="addrl">
+        <option>Village Ghass P.o Dhadiala Nazara Tehsil Batala, Gurdaspur Pin: 143505, Punjab, India</option>
+    </datalist>
+
+    <div id="sposp" style="display:none;">
+        <input type="text" id='sopstyp' placeholder='Spouse Type' list="sopstypl">
+        <datalist id="sopstypl">
+            <option>wife</option>
+            <option>son</option>
+            <option>daughter</option>
+            <option>mother</option>
+            <option>father</option>
+        </datalist>
+    
+        <input type="text" id='sopsnam' placeholder='Spouse Name' list="sopsnaml">
+        <datalist id="sopsnaml">
+            <option>Pooja Devi</option>
+        </datalist>
+
+        <!-- <div class="ampbtn" id="ampb" style="width: 100%;height: 50px;font-size: 20px;padding:0 20px;border-radius: 5px;background: black;color: white;margin-bottom: 20px;display: flex;align-items:center;cursor: pointer;">All More Person +</div> -->
+    </div>
+
+
+
+
+
+    <button id='pbtn' style="margin-bottom: 20px;">PREVIEW</button>
+    <button id='dbtn'>DOWNLOAD</button>
+</form>
+
+<div style='margin:50px 0;' id="svgbx">
+    <svg style="background:white;" fill="none" viewBox="0 0 595 842" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" id="svg2">
+        <image id="aimg" height="100%" href=""/>
+        <text x="460" y="320" fill="#663A2D" style='font:12px serif;font-weight: bold;' id="ugsd">UD 220364</text>
+        <text x="260" y="360" fill="black" style='font:12px arial;font-weight: bold;'>AFFIDAVIT BY SELF</text>
+        
+        <text x="80" y="380" font-size="11" style="font-family: arial" fill="black" id="addr">
+            <tspan x="80" dy="15">I <tspan>Sarwan Singh</tspan> S/o <tspan>Mr. Fakir Singh</tspan> resident of <tspan>Village Ghass P.o Dhadiala Nazara Tehsil Batala,</tspan></tspan>
+            <tspan x="80" dy="15"><tspan>Gurdaspur Pin: 143505, Punjab, India</tspan> do here by solemnly affirm and declare as under: -</tspan>
+        </text>
+        <!-- <style>#addr tspan tspan{font-weight:bold;}</style> -->
+        
+        <text x="100" y="430" font-size="11" style="font-family: arial" fill="black" id="singtxt">
+            <tspan x="100" dy="15">1)  That I am citizen of India.</tspan>
+            <tspan x="100" dy="15">2)  That I am going for tourist visa. That I am being support by my self.</tspan>
+            <tspan x="100" dy="15">3)  That all the documents I am providing for my Canada Tourist visa like the  certificate, Bank</tspan>
+            <tspan x="100" dy="15">statement etc are genuine and correct.</tspan>
+            <tspan x="100" dy="15">4)  That all the documents provided by me are genuine and have been so cured from the</tspan>
+            <tspan x="100" dy="15">related sources directly by me.</tspan>
+            <tspan x="100" dy="15">5)  That if any document found false and fake, I surely personally responsible for that and is</tspan>
+            <tspan x="100" dy="15">liable to be punished according to law.</tspan>
+        </text>
+
+        <text x="100" y="430" font-size="11" style="font-family: arial;display:none;" fill="black" id="spostxt">
+            <tspan x="100" dy="15">1)  That we are citizen of India.</tspan>
+            <tspan x="100" dy="15">2)  That we are going for tourist visa. That we are being support by our self.</tspan>
+            <tspan x="100" dy="15">3)  That all the documents we are providing for our Canada Tourist visa like the certificate,</tspan>
+            <tspan x="100" dy="15">Bank statement etc are genuine and correct.</tspan>
+            <tspan x="100" dy="15">4)  That all the documents provided by us are genuine and have been so cured from the related</tspan>
+            <tspan x="100" dy="15">sources directly by us.</tspan>
+            <tspan x="100" dy="15">5)  That if any document found false and fake, Our surely personally responsible for that and is</tspan>
+            <tspan x="100" dy="15">liable to be punished according to law.</tspan>
+        </text>
+
+        <text x="80" y="615" fill="black" style="font:12px arial;font-weight: bold;">VERIFICATION:-</text>
+
+        <text x="80" y="625" font-size="11" style="font-family: arial" fill="black" id="dfjgh">
+            <tspan x="80" dy="15">I do further declare that the contents mentioned in my above affidavit are true & correct to the</tspan>
+            <tspan x="80" dy="15">best of my knowledge & belief and nothing has been concealed therein.</tspan>
+        </text>
+
+        <text x="80" y="625" font-size="11" style="font-family: arial;display:none;" fill="black" id="saddf">
+            <tspan x="80" dy="15">We do further declare that the contents mentioned our above affidavit are true & correct to the</tspan>
+            <tspan x="80" dy="15">best of our knowledge & belief and nothing has been concealed therein.</tspan>
+        </text>
+
+        <text x="490" y="595" fill="black" style="font:12px arial;font-weight: bold;">DEPONENT</text>
+        <text x="490" y="700" fill="black" style="font:12px arial;font-weight: bold;">DEPONENT</text>
+    </svg>
+
+
+    <script>
+
+        
+        function dshfj(){
+
+            if (Single.checked) {
+                spostxt.style.display='none';
+                singtxt.style.display='';
+                saddf.style.display='none';
+                dfjgh.style.display='';
+                sposp.style.display='none';
+            } else {
+                spostxt.style.display='';
+                singtxt.style.display='none';
+                saddf.style.display='';
+                dfjgh.style.display='none';
+                sposp.style.display='';
+            }
+
+            (async () =>{
+                let dmol=new FileReader();
+                dmol.readAsDataURL(await(await fetch(`/img/${document.querySelector('.state:checked').value}.jpg`)).blob())
+                dmol.onload=()=>{aimg.setAttribute('href',dmol.result)};
+                
+            })();
+        }
+        form.oninput=()=>dshfj()
+        dshfj()
+
+
+
+
+        function vcuy(){
+
+            ugsd.innerHTML="  ".replaceAll(" ",()=>"ABCDEFGHIJKLMNOPQRSTUVWXYZ".charAt(Math.random()*10))+' '+(Math.floor(Math.random() * 999999 + 1) + 100000);
+
+
+            let sduhd='';
+            if (Spouse.checked) {
+                sduhd=`, my ${sopstyp.value} <tspan>${sopsnam.value}</tspan> `
+            }
+
+
+            addr.innerHTML='';
+            dfgew.innerHTML='';
+            let txt='';
+            `I <tspan>${namei.value}</tspan> S/o <tspan>Mr. ${fnamei.value}</tspan>${sduhd} resident of <tspan>${addri.value}</tspan> do here by solemnly affirm and declare as under: -`.split(' ').forEach((e,f)=>{
+                if(f==0){dfgew.append(e.replace(/[<tspan>]|[</tspan>]/g,''));}else{dfgew.append(' '+e.replace(/[<tspan>]|[</tspan>]/g,''));}
+                if (dfgew.clientWidth==dfgew.scrollWidth) {txt+=e+' '}
+                else{dfgew.innerHTML=e.replace(/[<tspan>]|[</tspan>]/g,'');jdsfhu();txt=e+' ';}
+            })
+            function jdsfhu(){
+                let ygu='',sjh=''
+                if (!txt.includes('</tspan> do')) {
+                    ygu='</tspan>'
+                }else if (!txt.includes('of <tspan>')) {
+                    sjh='<tspan>'
+                }
+                addr.insertAdjacentHTML('beforeend', `<tspan x="80" dy="15">${sjh+txt+ygu}</tspan>`)
+            }
+            jdsfhu()
+            document.querySelectorAll('#addr tspan tspan').forEach(e=>{
+                e.style='font-weight:bold';
+            })
+        }
+        // form.oninput=()=>uyhjio()
+    </script>
+        
+</div>
+
+    
+
+
+
+<script>
+  try {
+    if (form) {
+      form.onsubmit = (e) => {
+        loading.style.display = 'grid';
+        e.preventDefault();
+        setTimeout(()=>{
+          // vcuy()
+          let doc = new PDFDocument({ compress: true, size: "A4" });
+          let svgs = document.querySelectorAll('#svgbx svg');
+          svgs.forEach((e, l) => {
+            SVGtoPDF(doc, e, 0, 0);
+            if (l !== svgs.length - 1) {
+              doc.addPage();
+            }
+          })
+          let stream = doc.pipe(blobStream());
+          stream.on('finish', function () {
+            if (e.submitter.id == 'pbtn') {
+              window.open(stream.toBlobURL('application/pdf'), '_blank')
+            } else {
+              let link = document.createElement('a');
+              link.href = stream.toBlobURL('application/pdf');
+              link.download = "AFFIDAVIT.pdf";
+              link.click();
+            }
+          });
+          doc.end();
+          loading.style.display = 'none'
+        }, 0);
+      }
+    }
+  } catch (e) {}  
+</script>
+</main>
+
+<footer id='fotr' style="justify-content:center;">Docs Generator © <script>document.write((new Date).getFullYear())</script> • All Rights Reserved.</div></footer>
+</body>
+<script>
+
+
+  logout.onclick=()=>{
+    localStorage.removeItem('oydfg');
+    localStorage.removeItem('dfew');
+    location.href='/login';
+  }
+
+  if (localStorage.dfew){
+    avnam.innerText='Sonu';
+  }else if(localStorage.name){
+    avnam.innerText=atob(localStorage.name).split(' ')[0]
+  }
+</script>
+</html>

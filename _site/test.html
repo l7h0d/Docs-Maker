@@ -1,0 +1,23 @@
+<pre id="dfgew" style="width:400px;overflow-x:auto;"></pre>
+
+<script>
+    let txt='';
+    'Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque nostrum non dignissimos molestias ab error magnam blanditiis, voluptate, odit laudantium, voluptates ex sunt. Fugit nisi repudiandae a cum eligendi aliquid?'.split(' ').forEach((e,f)=>{
+        if(f==0){dfgew.append(e);}else{dfgew.append(' '+e);}
+        if (dfgew.clientWidth==dfgew.scrollWidth) {txt+=e+' '}
+        else{dfgew.innerHTML=e;jdsfhu();txt=e+' ';}
+    })
+    function jdsfhu(){
+        console.log(txt);
+    }
+    jdsfhu()
+
+
+  // let pp=document.createElement('pre');
+  // pp.style='width: 400px;overflow-x: scroll;';
+//   console.log(pp.clientWidth); 
+//   console.log(pp.scrollWidth)
+  // pp.innerHTML='Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque nostrum non dignissimos molestias ab error magnam blanditiis, voluptate, odit laudantium, voluptates ex sunt. Fugit nisi repudiandae a cum eligendi aliquid?'
+  // console.log(pp.clientWidth)
+  // console.log(pp.scrollWidth)
+</script>

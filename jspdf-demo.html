@@ -1,0 +1,111 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Document</title>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: sans-serif;
+        list-style: none;
+        text-decoration: none;
+        outline: none;
+        border: none;
+    }
+
+    body {
+        padding: 10px;
+background-color: whitesmoke;
+height: 100vh;
+display: flex;
+justify-content: space-between;
+
+    }
+
+    textarea,iframe{
+            border: 2px solid hsl(0, 0%, 30%);
+            width: calc(50% - 5px);
+            width:100%;
+            height: 100%;
+            resize: none;
+            color: hsl(0, 0%, 20%);
+            padding: 5px;
+            /* color:rgb(177, 184, 221); */
+        }
+        iframe{padding:0;}
+
+</style>
+<script src="https://mrrio.github.io/jsPDF/dist/jspdf.debug.js"></script>
+<script src="https://unpkg.com/jspdf@latest/dist/jspdf.umd.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/polyfills.umd.js"></script>
+
+</head>
+
+<body>
+    <p>Sonu</p>
+
+    <!-- <textarea id="textarea"></textarea> -->
+    <iframe id="iframe"></iframe>
+
+<!-- <img src="/itr-21-22.jpg" style="display:none;" id="hsfds"> -->
+
+    <script>
+
+var doc = new jsPDF();
+
+doc.html(document.body, {
+   callback: function (doc) {
+     doc.save();
+   },
+   x: 10,
+   y: 10
+});
+
+
+
+
+
+
+        // try {
+            
+        //     var doc = new jsPDF();
+        //     if (localStorage.textvalue) {
+        //     textarea.value=localStorage.textvalue
+        //     // eval(localStorage.textvalue)
+        //     eval('try{' + textarea.value + '} catch(e) { console.error(e.message,e.stack,e); }')
+        //     iframe.src=doc.output('bloburi')
+        // }else{
+        //     iframe.src=doc.output('bloburi')
+        // }
+        // textarea.oninput=()=>{
+        //     localStorage.textvalue=textarea.value
+        //     // eval(textarea.value)
+        //     eval('try{' + textarea.value + '} catch(e) { console.error(e.message,e.stack,e); }')
+        //     iframe.src=doc.output('bloburi')
+        // }
+        
+    // } catch (error) {
+        
+    // }
+
+        var doc = new jsPDF('p', 'px', [595, 842]);
+        // doc.setTextColor('177, 184, 221');
+        var reportTitle= 'doLorem ipsum dolor sit amet consectetur adipisicing elit. Vel quo rerum quos quidem iure officia? Aliquam incidunt quam maxime odio exercitationem. Neque nostrum fuga praesentium! Vitae suscipit est iure obcaecati.'
+
+        var splitTitle = doc.splitTextToSize(reportTitle, 550,15,15);
+        doc.text(15, 20, splitTitle);
+        // doc.text(15, 15, reportTitle, { maxWidth: 40 })
+
+        // img.src = 'http://localhost:4000/img/haryana.jpg'
+        // doc.addImage(img, 'jpg',0, 36 ,595 ,770);
+
+        // doc.setDrawColor(177, 184, 221);
+        doc.rect(38, 80, 520, 660);   
+        doc.rect(0, 0, 200, 10);   
+        iframe.src=doc.output('bloburi')
+    </script>
+
+</body>
+</html>

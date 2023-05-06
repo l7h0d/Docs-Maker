@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html id='html' lang="en">
+
+
+  
+
+<script>if (!localStorage.oydfg&&'/login'!=='/sbi-saving-account'){location.href='/login'}</script>
+<head>
+<meta charset="UTF-8">
+<title>SBI SAVING ACCOUNT •  Docs Maker</title>
+<meta content='' name='description'/>
+<meta content='' name='keywords'/>
+<link href='/favicon.ico' rel='icon' sizes='any'/>
+
+<link href="http://localhost:4000/sbi-saving-account" rel='canonical'/>
+<meta content='width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1' name='viewport'/>
+<link rel="stylesheet" href="/style.css">
+
+
+</head>
+<body id='body'>
+  <div id="loading"></div>
+  
+
+  
+ 
+  <header id='hedr'>
+    <a href='/' id='logo'>Docs Maker</a>
+    <nav id='nav'>
+      <a>
+        <p id="avnam"></p>
+        <p id="logout" style="color:red;margin:0 10px;">Logout</p>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><g fill="none"><path d="M0 0h24v24H0z"/><path d="M0 0h24v24H0z"/></g><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 4c1.93 0 3.5 1.57 3.5 3.5S13.93 13 12 13s-3.5-1.57-3.5-3.5S10.07 6 12 6zm0 14c-2.03 0-4.43-.82-6.14-2.88a9.947 9.947 0 0 1 12.28 0C16.43 19.18 14.03 20 12 20z"/></svg>
+      </a>
+    </nav>
+  </header>
+
+<main>
+<h1>SBI SAVING ACCOUNT</h1>
+
+
+
+<script>
+  try {
+    if (form) {
+      form.onsubmit = (e) => {
+        loading.style.display = 'grid';
+        e.preventDefault();
+        setTimeout(()=>{
+          // vcuy()
+          let doc = new PDFDocument({ compress: true, size: "A4" });
+          let svgs = document.querySelectorAll('#svgbx svg');
+          svgs.forEach((e, l) => {
+            SVGtoPDF(doc, e, 0, 0);
+            if (l !== svgs.length - 1) {
+              doc.addPage();
+            }
+          })
+          let stream = doc.pipe(blobStream());
+          stream.on('finish', function () {
+            if (e.submitter.id == 'pbtn') {
+              window.open(stream.toBlobURL('application/pdf'), '_blank')
+            } else {
+              let link = document.createElement('a');
+              link.href = stream.toBlobURL('application/pdf');
+              link.download = "SBI SAVING ACCOUNT.pdf";
+              link.click();
+            }
+          });
+          doc.end();
+          loading.style.display = 'none'
+        }, 0);
+      }
+    }
+  } catch (e) {}  
+</script>
+</main>
+
+<footer id='fotr' style="justify-content:center;">Docs Generator © <script>document.write((new Date).getFullYear())</script> • All Rights Reserved.</div></footer>
+</body>
+<script>
+
+
+  logout.onclick=()=>{
+    localStorage.removeItem('oydfg');
+    localStorage.removeItem('dfew');
+    location.href='/login';
+  }
+
+  if (localStorage.dfew){
+    avnam.innerText='Sonu';
+  }else if(localStorage.name){
+    avnam.innerText=atob(localStorage.name).split(' ')[0]
+  }
+</script>
+</html>
