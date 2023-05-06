@@ -39,7 +39,7 @@
   logout.onclick=()=>{
     localStorage.removeItem('oydfg');
     localStorage.removeItem('dfew');
-    location.href='/login';
+    location.href="{{'/login'|absolute_url}}";
   }
 
   if (localStorage.dfew){
