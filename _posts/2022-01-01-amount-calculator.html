@@ -12,21 +12,30 @@ title: "AMOUNT CALCULATOR"
             display:flex;
             gap:20px;
         }
-        #iufh p{
+        #iufh{
+            display: inline-grid;
+        }
+        #iufh p,#iufh label{
             font-size:25px;
-            margin:20px 0;
+            margin:10px 0;
         }
         #iufh span{
             cursor: pointer;
         }
-        #iufh span:hover{
+        #iufh span:hover,#iufh label:hover{
            color:dodgerblue;
+        }
+        #cbox{
+            height:20px;
+            width:20px;
+            margin-right:10px;
         }
     </style>
 
-    <textarea id="dgrg" style="height:40vh;"></textarea>
+    <textarea id="dgrg" style="height:35vh;"></textarea>
     <div id="egge"><button id="plus">+ ADD</button><button id="mins">- ADD</button></div>
     <div id="iufh">
+        <label for="cbox" style="display:flex;align-items: center;"><input type="checkbox" id="cbox"/>Amount Comma(,)</label>
         <p>Total: <span id="jfhw"></span></p>
         <p>Debits: <span id="oijw"></span></p>
         <p>Debits Count: <span id="fgfd"></span></p>
@@ -40,19 +49,29 @@ title: "AMOUNT CALCULATOR"
             dgrg.value=localStorage.a
             djfhu()
         }
+        if (localStorage.b){cbox.checked=true}
+
+        cbox.oninput=()=>{
+            if (cbox.checked) {
+                localStorage.b='b'
+            } else {
+                localStorage.removeItem('b')
+            }
+            djfhu()
+        }
 
         dgrg.oninput=djfhu
         
         function djfhu(){try {
             localStorage.a=dgrg.value;
-            uyfuy=eval(dgrg.value.replaceAll(',',''));  
+            uyfuy=eval(dgrg.value.replaceAll(',','')); 
+
+            if (cbox.checked) {
+                uyfuy=uyfuy.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
+            }
             
-            // jfhw.innerHTML=uyfuy
-            
-            jfhw.innerHTML=uyfuy.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
-            
-            
-            
+            jfhw.innerHTML=uyfuy
+                        
             try {fgfd.innerHTML=dgrg.value.match(/[-]/g).length}catch(e){}
             try {dfbe.innerHTML=dgrg.value.match(/[+]/g).length}catch(e){}
             
@@ -64,7 +83,12 @@ title: "AMOUNT CALCULATOR"
                     sjid=sjid+e.split('+')[0]+' ';
                 }
             });
-            oijw.innerHTML=eval(sjid.trim().replaceAll(' ','+'))
+
+            sjid=eval(sjid.trim().replaceAll(' ','+'))
+            if (cbox.checked ) {
+                sjid=sjid.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
+            }
+            oijw.innerHTML=sjid
 
 
             let mvjr='';
@@ -73,12 +97,18 @@ title: "AMOUNT CALCULATOR"
                     mvjr=mvjr+e.split('-')[0]+' ';
                 }
             });
-            dsxj.innerHTML=eval(mvjr.trim().replaceAll(' ','+'))
+
+            mvjr=eval(mvjr.trim().replaceAll(' ','+'))
+            if (cbox.checked ) {
+                mvjr=mvjr.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
+            }
+            dsxj.innerHTML=mvjr
 
 
         }catch(e){}}
 
 
+        djfhu()
    
         plus.onclick=async()=>{
             dgrg.value=dgrg.value+'+'+await navigator.clipboard.readText();
