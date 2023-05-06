@@ -6,27 +6,18 @@
 <title>{% if  page.title %}{{page.title}} • {% endif %} Docs Maker</title>
 <meta content='' name='description'/>
 <meta content='' name='keywords'/>
-<link href='/favicon.ico' rel='icon' sizes='any'/>
-{% if page.canonical_url %}
-  {%- assign canonical_url = page.canonical_url %}
-{% else %}
-  {%- assign canonical_url = page.url | replace: "index.html", "" | absolute_url %}
-{% endif %}
-<link href="{{ canonical_url }}" rel='canonical'/>
+<link href="{{'/favicon.ico'|absolute_url}}" rel='icon' sizes='any'/>
+{% if page.canonical_url %}{%- assign canonical_url = page.canonical_url %}{% else %}{%- assign canonical_url = page.url | replace: "index.html", "" | absolute_url %}{% endif %}
+<link href="{{canonical_url}}" rel='canonical'/>
 <meta content='width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1' name='viewport'/>
-<link rel="stylesheet" href="/style.css">
-
-{% for js in page.js %}<script src="/script/{{js}}" defer></script>
-{% endfor %}
+<link rel="stylesheet" href="{{'/style.css'|absolute_url}}">
+{% for js in page.js %}<script src="{{'/script/{{js}}'|absolute_url}}" defer></script>{% endfor %}
 </head>
 <body id='body'>
   <div id="loading"></div>
   
-
-  
- 
   <header id='hedr'>
-    <a href='/' id='logo'>Docs Maker</a>
+    <a href="{{'/'|absolute_url}}" id='logo'>Docs Maker</a>
     <nav id='nav'>
       <a>
         <p id="avnam"></p>
