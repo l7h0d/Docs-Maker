@@ -127,7 +127,7 @@ js: [pdfkit.js,blobstream.js,source.js]
 
             (async () =>{
                 let dmol=new FileReader();
-                dmol.readAsDataURL(await(await fetch(`/img/${document.querySelector('.state:checked').value}.jpg`)).blob())
+                dmol.readAsDataURL(await(await fetch(`{{'/img/'|absolute_url}}${document.querySelector('.state:checked').value}.jpg`)).blob())
                 dmol.onload=()=>{aimg.setAttribute('href',dmol.result)};
                 
             })();
